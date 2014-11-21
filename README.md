@@ -8,9 +8,9 @@ NodeJS Websocket Benchmarking
 * 配置 App, Nginx
 
   ```
-    cd chat1
+    cd socket.io/chat1
     npm install
-    cd chat2
+    cd socket.io/chat2
     npm install
   ```
 
@@ -101,9 +101,9 @@ NodeJS Websocket Benchmarking
 
   ```
   redis-server
-  cd chat1
+  cd socket.io/chat1
   node .
-  cd chat2
+  cd socket.io/chat2
   node .
   chmod 666 /tmp/chat1.socket
   chmod 666 /tmp/chat1.socket
@@ -115,3 +115,6 @@ NodeJS Websocket Benchmarking
   ```
   websocket-bench -a 100000 -c 100 -g generator.js -m 1 -k -v http://localhost:80
   ```
+
+
+## SocketCluster
