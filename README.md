@@ -77,7 +77,7 @@ NodeJS Websocket Benchmarking
   "socket.io": "~1.2.0",
   ```
 
-  修改 websocket-bench 源码(L20)
+  修改 websocket-bench 源码(lib/workers/socketioworker.js L20)
 
   ```
   var client = io.connect(this.server, {'transports': ['websocket'], 'force new connection' : true});
