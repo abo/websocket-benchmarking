@@ -100,6 +100,7 @@ NodeJS Websocket Benchmarking
 * 启动 App, Nginx (均需要调整ulimit)
 
   ```
+  redis-server
   cd chat1
   node .
   cd chat2
