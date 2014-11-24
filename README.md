@@ -3,7 +3,7 @@ websocket-benchmarking
 
 NodeJS Websocket Benchmarking
 
-## Socket.IO
+## Socket.IO(On MAC OS X)
 
 * 配置 App, Nginx
 
@@ -15,7 +15,9 @@ NodeJS Websocket Benchmarking
   ```
 
   nginx.conf 修改:
-  需要安装upsteam-hash-module, 按 hash($remote_addr.$remote_port)负载均衡
+  由于测试时所有Client都在本机, 而当前稳定版nginx(1.6.2)负载均衡算法不包含generic hash, 按ip_hash分配会导致所有请求都发到同一个后端几点, 所以需要安装upsteam-hash-module, 按 hash($remote_addr.$remote_port)负载均衡.
+  
+  upstream使用unix socket地址( unix:/tmp/chat1.socket )能减少local ip port的使用(系统配置中net.inet.ip.portrange的设置)
 
   ```
     worker_processes  4;
@@ -63,6 +65,7 @@ NodeJS Websocket Benchmarking
 
 
 * 修改 websocket-bench
+  websocket-bench中依赖版本策略会导致socket.io-client连接方式(transport) fall back到polling, 而不是websocket, 所以需要修改依赖版本及源码
 
   ```
   npm install -g websocket-bench
@@ -89,6 +92,7 @@ NodeJS Websocket Benchmarking
   ```
 
 * 系统参数调整
+  最大打开文件数，本地ip端口范围等
 
   ```
   sudo sysctl -w kern.maxfiles=1048600
