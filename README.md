@@ -15,9 +15,9 @@ NodeJS Websocket Benchmarking
   ```
 
   nginx.conf 修改:
-  由于测试时所有Client都在本机, 而当前稳定版nginx(1.6.2)负载均衡算法不包含generic hash, 按ip_hash分配会导致所有请求都发到同一个后端几点, 所以需要安装upsteam-hash-module, 按 hash($remote_addr.$remote_port)负载均衡.
+  由于测试时所有 client 都在本机, 而当前稳定版 nginx(1.6.2) 负载均衡算法不包含generic hash, 按 ip_hash 分配会导致所有请求都发到同一个后端节点, 所以需要安装upsteam-hash-module, 按 hash($remote_addr.$remote_port) 负载均衡.
   
-  upstream使用unix socket地址( unix:/tmp/chat1.socket )能减少local ip port的使用(系统配置中net.inet.ip.portrange的设置)
+  upstream 使用 unix socket地址 (unix:/tmp/chat1.socket) 能减少 local ip port 的使用(系统配置中 net.inet.ip.portrange的设置 )
 
   ```
     worker_processes  4;
