@@ -65,7 +65,8 @@ NodeJS Websocket Benchmarking
 
 
 * 修改 websocket-bench
-  websocket-bench中依赖版本策略会导致socket.io-client连接方式(transport) fall back到polling, 而不是websocket, 所以需要修改依赖版本及源码
+
+  websocket-bench中依赖版本策略会导致socket.io-client连接方式(transport) fall back到polling, 而不是websocket, 此外，依赖策略导致使用engine.io-client较低版本, 所以需要修改依赖版本及源码
 
   ```
   npm install -g websocket-bench
