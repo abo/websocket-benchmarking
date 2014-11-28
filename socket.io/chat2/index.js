@@ -6,7 +6,7 @@ var redis = require('socket.io-redis');
 var io = require('socket.io')(server);
 io.adapter(redis({host:'localhost',port:6379}));
 
-var port = process.env.PORT || '/tmp/chat2.socket';//3001;
+var port = process.env.PORT || 3001;//'/tmp/chat2.socket';//3001;
 
 server.listen(port, function () {
   console.log('Server listening at port ' + port);
@@ -27,10 +27,11 @@ io.on('connection', function (socket) {
   // when the client emits 'new message', this listens and executes
   socket.on('new message', function (data) {
     // we tell the client to execute 'new message'
-    socket.broadcast.emit('new message', {
-      username: socket.username,
-      message: data
-    });
+	socket.emit('new message',data);
+//    socket.broadcast.emit('new message', {
+//      username: socket.username,
+//      message: data
+ //   });
   });
 
   // when the client emits 'add user', this listens and executes
